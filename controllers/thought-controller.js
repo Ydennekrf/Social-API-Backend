@@ -2,12 +2,12 @@ const { Thought, User } = require('../models');
 
 module.exports = {
     getThoughts(req, res) {
-        User.find()
+        Thought.find()
         .then((users) => res.json(users))
         .catch((err) => res.status(500).json(err));
     },
     getThoughtById(req, res) {
-        User.findOne({ _id: req.params.userId })
+        Thought.findOne({ _id: req.params.thoughtId })
             .select('-__v')
             .populate('reactions')
             .then((user) => 
